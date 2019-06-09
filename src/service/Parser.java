@@ -28,7 +28,6 @@ public class Parser implements Validation{
 		case "modifyBrightness" : return modifyBrightness();
 		case "reduce" : return reduce();
 		case "modifyContrast" : return modifyContrast();
-		case "quantization" : return quantization();
 		case "save" : return save(app.getImage_result());
 		}
 		return map;
@@ -159,24 +158,6 @@ public class Parser implements Validation{
 		
 		return map;
 		
-	}
-
-	public Map<String, Object> quantization(){
-		
-		try {
-			
-			int q = Integer.parseInt(app.getComando());
-			
-			map.put("q", q);
-		}
-		catch(NumberFormatException e) {
-			
-			map.put("error", true);
-			app.getBd().showErrorMessage("El valor de q no es numérico");
-			
-		}
-		
-		return map;
 	}
 	
 	public Map<String, Object> save(Pixel[][] imagen){

@@ -221,25 +221,6 @@ public class Application implements ImagesOperationsListener, Visitable{
 	@Override
 	public void quantization(String arg0) {
 		// TODO Auto-generated method stub
-		setComando(arg0);
-		setOperacion("quantization");
-		map_sysVal = this.accept(sysVal);
-		
-		if(!(boolean)map_sysVal.get("error")) {
-			map_parser = this.accept(parser);
-			
-			if(!(boolean)map_parser.get("error")) {
-				
-				int q = (int) map_parser.get("q");
-				ColorImageImplDecorator color_dec = new ColorImageConvertImage(color_img);
-				color_dec.escalaGrises(image);
-				BufferedImage bf_conv = color_dec.convertToBufferedImage(image);
-				BufferedImage bf = color_dec.cuantification(bf_conv, q);
-				image = map_img.mapearImagen(bf);
-				bd.showResult(image, image[0].length, image.length);
-			}
-			
-		}
 		
 	}
 
@@ -260,10 +241,7 @@ public class Application implements ImagesOperationsListener, Visitable{
 			
 				int sx = (int) map_parser.get("sx");
 				int sy = (int) map_parser.get("sy");
-				//ResizableImageImplDecorator res_dec = new ResizableConvertImage(res_img);
-				//BufferedImage bf_conv = res_dec.convertToBufferedImage(image);
-				//BufferedImage bf = res_dec.reduccion(bf_conv, sx, sy);
-				//image = map_img.mapearImagen(bf);
+	
 				ResizableImageValidDecorator  res_dec = new ResizableImageValid(res_img);
 				
 				try {
