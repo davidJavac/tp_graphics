@@ -54,28 +54,6 @@ public class ResizableImageImpl extends ResizableImage{
 		
 	}
 
-	/*@Override
-	public BufferedImage reduccion(BufferedImage bf, int x1, int y1) {
-		// TODO Auto-generated method stub
-		
-		if(x1 > 0 && y1 > 0) {
-			
-			BufferedImage outputImage = new BufferedImage(x1,
-					y1, bf.getType());
-			
-			// scales the input image to the output image
-			Graphics2D g2d = outputImage.createGraphics();
-			g2d.drawImage(bf, 0, 0, x1, y1, null);
-			g2d.dispose();
-			
-			return outputImage;
-			
-		}
-		else
-			return bf;
-		
-	}*/
-
 	@Override
 	public int validRGB(int value) {
 		// TODO Auto-generated method stub

@@ -77,11 +77,6 @@ public class Application implements ImagesOperationsListener, Visitable{
 	public static BitmapDisplay getBd() {
 		return bd;
 	}
-
-	public void showOriginal() {
-		
-	}
-	
 	
 	@Override
 	public void anotherFilter() {
