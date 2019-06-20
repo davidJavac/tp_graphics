@@ -21,7 +21,7 @@ public class BufferedImageFactory extends ImageFactory{
 		try {
 			archivo = new FileInputStream(path);
 			try {
-				ImageInputStream imagen = ImageIO.createImageInputStream(archivo);
+				//ImageInputStream imagen = ImageIO.createImageInputStream(archivo);
 				return ImageIO.read(archivo);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

@@ -2,17 +2,13 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
 
 import service.BufferedImageFactory;
-import service.ColorImageConvertImage;
 import service.ColorImageImpl;
-import service.ResizableConvertImage;
 import service.MapImpl;
 import service.Parser;
 import service.ResizableImageImpl;
@@ -295,17 +291,21 @@ public class Application implements ImagesOperationsListener, Visitable{
 		// TODO Auto-generated method stub
 		File outputfile = new File(arg0);
 		this.setOperacion("save");
-		map_parser = this.accept(parser);
-		if(!(boolean)map_parser.get("error")) {
+		map_sysVal = this.accept(sysVal);
+		if(!(boolean)map_sysVal.get("error")) {
 			
-			BufferedImage bf = (BufferedImage) map_parser.get("buffered_image"); 
-			try {
-				System.out.println(ImageIO.write(bf, "bmp", outputfile));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				bd.showErrorMessage("No se ha podido guardar el archivo");
+			map_parser = this.accept(parser);
+			if(!(boolean)map_parser.get("error")) {
+				
+				BufferedImage bf = (BufferedImage) map_parser.get("buffered_image"); 
+				try {
+					System.out.println(ImageIO.write(bf, "bmp", outputfile));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					bd.showErrorMessage("No se ha podido guardar el archivo");
+				}
+				bd.showInformationMessage("El archivo se ha guardado con éxito");
 			}
-			bd.showInformationMessage("El archivo se ha guardado con éxito");
 		}
 		
 	}

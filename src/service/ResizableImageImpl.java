@@ -1,11 +1,5 @@
 package service;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.util.ArrayList;
-
 import model.PixelDefault;
 import model.ResizableImage;
 import unpaz.ayp3.bitmapDisplay.BitmapDisplay;
@@ -18,23 +12,19 @@ public class ResizableImageImpl extends ResizableImage{
 	public Pixel[][] recorte(Pixel[][] imagen, int x1, int y1, int x2, int y2) {
 		// TODO Auto-generated method stub
 		
-		int row = y1 > y2? y1-y2: y2 > y1? y2 - y1 : 0;
-		int col = x1 > x2? x1-x2: x2 > x1? x2 - x1 : 0;
-		
-		int fila_min = imagen.length - y1;
-		int colum_min = x1;
-		
-		Pixel [][] recorte = new Pixel [row][col];
-		
+		int row = y2 - y1;
+		int col = x2 - x1;
+				
 		if((0 <= row && row <= imagen.length) && (0 <= col && col <= imagen[0].length) &&
 				(row != 0 && col != 0)) {
+			Pixel [][] recorte = new Pixel [row][col];
 			
 			for(int i = 0;i < row; i++) {
 				
 				for(int j = 0;j < col; j++) {
 					
 					try {
-						recorte[i][j] = imagen[i + fila_min][j + colum_min]; 
+						recorte[i][j] = imagen[i + y1][j + x1]; 
 					}
 					catch(ArrayIndexOutOfBoundsException e) {
 						
@@ -80,7 +70,7 @@ public class ResizableImageImpl extends ResizableImage{
 		for(int i = 0; i < height; i += y1) {
 			
 			int col_aux = 0;
-			ArrayList<Pixel> ar_pixel = new ArrayList<Pixel>();
+			
 			for(int j = 0; j < width; j += x1) {
 		
 				int r = 0;
